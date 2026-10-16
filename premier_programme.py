@@ -168,3 +168,50 @@ total = tarif_nuit * duree
 
 print("Le tarif total pour le séjour est de", total, "euros")
 print("Le tarif par nuit est de", tarif_nuit, "euros")
+
+# Les fonctions en programmation #
+
+def dire_bonjour():
+    print("Bonjour !")
+
+dire_bonjour()
+
+def dire_bonjour_prenom(prenom):
+        print("Bonjour " + prenom + "!")
+
+dire_bonjour_prenom("Jean")  
+
+def afficher_bienvenue():
+    print("Bienvenue !")
+
+def accueil_utilisateur(prenom):
+    print("Bienvenue !")
+
+def accueil_utilisateur(prenom):
+    afficher_bienvenue()
+    dire_bonjour_prenom(prenom)
+
+accueil_utilisateur("Marie")
+accueil_utilisateur("Géraldine")
+
+# Utliser des fonctions prédéfinies #
+
+ventes = [100.5, 230.0, 89.99, 145.0, 210.25]
+total = sum(ventes)
+
+print("Le total des ventes est de :", total, "€")
+
+# Calculer la moyenne des ventes #
+
+moyenne = sum(ventes) / len(ventes)
+
+plus_grande_vente = max(ventes)
+print("La plus grande vente est de :", plus_grande_vente, "€")
+
+plus_petite_vente = min(ventes)
+print("La plus grande vente est de :", plus_petite_vente, "€")
+
+# Calculer le total des ventes #
+
+total = round(total, 2)
+print("Le total des ventes arrondi est de :",total,"€")
