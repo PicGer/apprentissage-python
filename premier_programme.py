@@ -1,22 +1,24 @@
-# print("Bonjour, je commence ma formation de développeuse IA !")
+print("Bonjour, je commence ma formation de développeuse IA !")
 
-# import datetime
+import datetime
+import re
+import unittest
 
-# #Du problème à l'algorythme
+ # Du problème à l'algorythme #
 
-# heure_rendezvous = datetime.datetime datetime(2026, 11, 28, 14, 0)
-# heure_actuelle = datetime.datetime.now()
+heure_rendezvous = datetime.datetime(2026, 11, 28, 14, 0)
+heure_actuelle = datetime.datetime.now()
 
-# if heure_actuelle < heure_rendezvous:
-#     moyen_de_transport = "voiture"
-#     print("choisir un moyen de transport:", moyen_de_transport)
-#     print("sepréparer")
-#     print("se rendre au garage")
-#     print("suivre le trajet")
-# else:
-#     print("Je suis en retard pour mon rendez-vous !")
+if heure_actuelle < heure_rendezvous:
+     moyen_de_transport = "voiture"
+     print("choisir un moyen de transport:", moyen_de_transport)
+     print("se préparer")
+     print("se rendre au garage")
+     print("suivre le trajet")
+else:
+     print("Je suis en retard pour mon rendez-vous !")
 
-# #Les variables en programmation
+ # Les variables en programmation #
 
 nom = "Dupond" #String
 age = 30 #Integer
@@ -29,7 +31,7 @@ age = 35
 
 print(age)
 
-# #Calculer des variables
+ # Calculer des variables #
 
 prix_unitaire = 10
 quantite = 4
@@ -45,12 +47,11 @@ total_avec_remise = total - motant_remise
 print("montant de la remise:", motant_remise)
 print("total_avec_remise:", total_avec_remise)
 
-# #Les opérateurs arythmétiques en pseudo-code
+ # Les opérateurs arythmétiques en pseudo-code #
 
-#Utiliser les opérateurs de comparaisons
+ # Utiliser les opérateurs de comparaisons en pseudo-code #
 
-
-# Début
+#Début
 
 #     age_utilisateur <- 17
 
@@ -66,7 +67,7 @@ print("total_avec_remise:", total_avec_remise)
 #     age_utilisateur <- "dix"
 #     age_utilisateur2 <- "dix"
 
-#     Si age_utilisateur = age_utilisateur2Alors
+#     Si age_utilisateur = age_utilisateur2 Alors
 #         Afficher "Vous avez le même âge"
 #     Sinon
 #         Afficher "Vous n'avez pas le même âge"
@@ -85,7 +86,7 @@ if date_de_reservation in ["2026-10-06", "2026-10-07"]:
     tarif = 150
 print("Le tarif est de", tarif, "euros")
 
-# #Les opérateurs logiques
+ # Les opérateurs logiques en pseudo-code #
 
 # Si est majeur ET a permis 
 # Alors
@@ -95,7 +96,7 @@ print("Le tarif est de", tarif, "euros")
 # Alors
 #     Afficher "Vous avez droit à une réduction"
 
-# #Résoudre des problèmes avec la logique booléenne #
+ # Résoudre des problèmes avec la logique booléenne #
 
 est_premium = False
 montant_commande = 90
@@ -110,8 +111,7 @@ if a_droit_livraison:
 else:
     print("Vous n'avez pas droit à la livraison gratuite.")
 
-
-# Manipuler une liste #
+ # Manipuler une liste #
 
 taches = ["envoyer un email", "préparer une réunion", "Appeler un client"]
 print(taches)
@@ -185,33 +185,137 @@ def afficher_bienvenue():
     print("Bienvenue !")
 
 def accueil_utilisateur(prenom):
-    print("Bienvenue !")
-
-def accueil_utilisateur(prenom):
     afficher_bienvenue()
     dire_bonjour_prenom(prenom)
 
 accueil_utilisateur("Marie")
 accueil_utilisateur("Géraldine")
 
-# Utliser des fonctions prédéfinies #
+# Calculer l'âge : Définir la fonction puis appeler la fonction #
 
-ventes = [100.5, 230.0, 89.99, 145.0, 210.25]
-total = sum(ventes)
+def calculer_age(birth_year, birth_month, birth_day, current_year, current_month, current_day):
+    age= current_year - birth_day
+    if current_month < birth_month or (current_month == birth_month and current_day < birth_day):
+        age-= 1
+    return age
 
-print("Le total des ventes est de :", total, "€")
+age = calculer_age(1990, 5, 17, 2026, 10, 18)
+print(age)
 
-# Calculer la moyenne des ventes #
+# Conception de fonction efficace #
+# Définition de la fonction #
 
-moyenne = sum(ventes) / len(ventes)
+nom = "Géraldine"
 
-plus_grande_vente = max(ventes)
-print("La plus grande vente est de :", plus_grande_vente, "€")
+def calculer_total(produits):
+    return sum(produits)
 
-plus_petite_vente = min(ventes)
-print("La plus grande vente est de :", plus_petite_vente, "€")
+def afficher_message_bienvenue(nom):
+    print("Bienvenue ", nom)
 
-# Calculer le total des ventes #
+def verifier_reduction(total):
+    if total > 100:
+        print("Vous avez le droit à une réduction de 10% !")
+          
+def generer_recu(nom, produits):
+    total= calculer_total(produits)
+    afficher_message_bienvenue(nom)
+    verifier_reduction(total)
+    print("Total à payer :", total)
 
-total = round(total, 2)
-print("Le total des ventes arrondi est de :",total,"€")
+ # Appeler la fonction #
+
+generer_recu(nom, [45, 60, 20])
+
+ # Système de facturation #
+ # Vérifier infos clients #
+
+def valider_client(client):
+    return "nom" in client and "adresse" in client
+
+ # Calculer le sous-total des articles #
+
+def calculer_sous_total(articles):
+    total = 0
+    for article in articles:
+        total += article["prix"] * article["quantite"]
+    return total
+    
+# Appliquer les taxes TVA #
+
+def appliquer_taxes(sous_total, taux_TVA=20):
+    return round(sous_total * (1 + taux_TVA / 100), 2)
+
+# Générer la facture finale #
+
+def generer_facture(client, articles):
+    if not valider_client(client):
+        return "Erreur : informations clients invalides"
+
+    sous_total = calculer_sous_total(articles)
+    total_ttc = appliquer_taxes(sous_total)
+
+    facture = f"Facture pour {client['nom']}\n"
+    facture += f"Adresse : {client['adresse']}\n\n"
+
+    facture += "Articles :\n"
+    for article in articles:
+        facture += f"- {article['nom']} x{article['quantite']} : {article['prix']}€\n"
+
+    facture += f"\nSous-total : {sous_total}€\n"
+    facture += f"Total (TTC) : {total_ttc}€\n"
+
+    return facture
+
+articles = [
+    {"nom": "Pain", "prix": 1.20, "quantite": 2},
+    {"nom": "Croissant", "prix": 1.10, "quantite": 3},
+]
+
+client = {"nom": "Jean Dupont", "adresse": "10 rue de Paris, 75000 Paris"}
+print(generer_facture(client, articles))
+
+ # Effectuer un test unitaire automatisé #
+
+ # import unittest #
+
+class TestFonctions(unittest.TestCase):
+
+    def test_appliquer_taxes(self):
+        self.assertEqual(appliquer_taxes(100), 120)  # Test avec taux par défaut
+        self.assertEqual(appliquer_taxes(200, 10), 220)  # Test avec un autre taux
+        self.assertEqual(appliquer_taxes(0), 0)  # Cas limite : montant nul
+        self.assertAlmostEqual(appliquer_taxes(99.99), 119.99, places=2)  # Test de précision
+
+# Exécuter les tests
+
+if __name__ == "__main__":
+    unittest.main()
+
+# Vérifier si un email est valide #
+
+ # import re #
+
+def valider_email(email):
+    pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+    return bool(re.match(pattern, email))
+
+ # Tests #
+
+print(valider_email("contact@entreprise.com"))  # ✅ True
+print(valider_email("invalide@@exemple.com"))   # ❌ False
+
+ # Vérifier si un numéro de téléphone est valide #
+
+def formater_telephone(numero):
+    # Reformate un numéro de téléphone français en affichage standard #
+    numero = numero.replace(" ", "").replace("-", "")
+    if len(numero) == 10 and numero.isdigit():
+        return f"{numero[:2]} {numero[2:4]} {numero[4:6]} {numero[6:8]} {numero[8:]}"
+    return "Numéro invalide"
+
+ # Tests #
+
+print(formater_telephone("0612345678"))  # ✅ "06 12 34 56 78"
+print(formater_telephone("01-23-45-67-89"))  # ✅ "01 23 45 67 89"
+print(formater_telephone("12345"))  # ❌ "Numéro invalide"
