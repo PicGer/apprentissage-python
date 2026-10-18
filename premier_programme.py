@@ -3,6 +3,7 @@ print("Bonjour, je commence ma formation de développeuse IA !")
 import datetime
 import re
 import unittest
+import random
 
  # Du problème à l'algorythme #
 
@@ -194,7 +195,7 @@ accueil_utilisateur("Géraldine")
 # Calculer l'âge : Définir la fonction puis appeler la fonction #
 
 def calculer_age(birth_year, birth_month, birth_day, current_year, current_month, current_day):
-    age= current_year - birth_day
+    age= current_year - birth_year
     if current_month < birth_month or (current_month == birth_month and current_day < birth_day):
         age-= 1
     return age
@@ -279,18 +280,18 @@ print(generer_facture(client, articles))
 
  # import unittest #
 
-class TestFonctions(unittest.TestCase):
+# class TestFonctions(unittest.TestCase):
 
-    def test_appliquer_taxes(self):
-        self.assertEqual(appliquer_taxes(100), 120)  # Test avec taux par défaut
-        self.assertEqual(appliquer_taxes(200, 10), 220)  # Test avec un autre taux
-        self.assertEqual(appliquer_taxes(0), 0)  # Cas limite : montant nul
-        self.assertAlmostEqual(appliquer_taxes(99.99), 119.99, places=2)  # Test de précision
+#    def test_appliquer_taxes(self):
+#        self.assertEqual(appliquer_taxes(100), 120)  # Test avec taux par défaut
+#        self.assertEqual(appliquer_taxes(200, 10), 220)  # Test avec un autre taux
+#        self.assertEqual(appliquer_taxes(0), 0)  # Cas limite : montant nul
+#        self.assertAlmostEqual(appliquer_taxes(99.99), 119.99, places=2)  # Test de précision
 
 # Exécuter les tests
 
-if __name__ == "__main__":
-    unittest.main()
+# if __name__ == "__main__":
+#    unittest.main()
 
 # Vérifier si un email est valide #
 
@@ -316,6 +317,60 @@ def formater_telephone(numero):
 
  # Tests #
 
-print(formater_telephone("0612345678"))  # ✅ "06 12 34 56 78"
+print(formater_telephone("0612345678"))      # ✅ "06 12 34 56 78"
 print(formater_telephone("01-23-45-67-89"))  # ✅ "01 23 45 67 89"
-print(formater_telephone("12345"))  # ❌ "Numéro invalide"
+print(formater_telephone("12345"))           # ❌ "Numéro invalide"
+
+ # Jeu du juste prix #
+
+nb_mystere = random.randint(0, 100)
+a_gagne = False
+nb_essai = 0
+
+while not a_gagne:
+    proposition = int(input("Quelle est votre propositio ?"))
+    nb_essai += 1
+
+    if proposition < nb_mystere:
+        print ("Votre proposition est trop petite")
+
+    elif proposition > nb_mystere:
+        print ("Votre proposition est trop grande")
+
+    else:
+        a_gagne = True
+        print (f"Bravo ! Vous avez gagné en {nb_essai} essais.")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+

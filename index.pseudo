@@ -1,0 +1,5 @@
+Algorithme : Bonjour
+
+Début
+    ÉcrireEcran("Bonjour")
+Fin
